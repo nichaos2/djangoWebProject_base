@@ -1,5 +1,12 @@
 """
+author: nichaos2
+date: 24/08/2021
+
 Adding Models To The Administration Site
+----------------------------------------
+
+after having the default functionallity the class PostAdmin is created to enhance it
+
 Code copied from the site https://djangocentral.com/building-a-blog-application-with-django/
 """
 

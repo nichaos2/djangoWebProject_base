@@ -1,4 +1,7 @@
 """
+author: nichaos2
+date: 24/08/2021
+
 Database Models
 ---------------
 
