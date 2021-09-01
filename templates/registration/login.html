@@ -1,19 +1,19 @@
 {% extends "base.html" %} 
 
 {% block title %}Login{% endblock %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-
 <div class="jumbotron">
     <div style="width: 100%; max-width:530px; margin: 0 auto;">
         <h2>Login</h2><br>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form | crispy }}
             <button type="submit" class="btn btn-success">Login</button><br>
         </form>
         <br>
-        <h4> or <a href="#">signup</a></h4>
+        <h4> or <a href="{% url 'register' %}">signup</a></h4>
         <br>
         <br>
         <h5>Are you the admin? You could go to the <a href="{% url 'admin:index' %}">admin page</a> </h5>
