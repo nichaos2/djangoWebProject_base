@@ -30,10 +30,10 @@ class PostList(generic.ListView):
     Notice that filte status=1 shows only the published posts
     """
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'blog/index.html'
 
 def post_detail(request, slug):
-    template_name = 'post_detail.html'
+    template_name = 'blog/post_detail.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
     new_comment = None
