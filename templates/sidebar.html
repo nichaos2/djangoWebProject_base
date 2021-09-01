@@ -10,11 +10,21 @@
 <!-- Sidebar Widgets Column -->
 <div class="col-md-4 float-right ">
 <div class="card my-4">
-        <h5 class="card-header">About Us</h5>
+        {% if request.user.is_authenticated %}
+        <h5 class="card-header">Hello {{ request.user }}</h5>
+        {% else %}
+        <h5 class="card-header">Hello stranger!</h5>
+        {% endif %}
     <div class="card-body">
-        <p class="card-text"> This awesome blog is made on the top of our Favourite full stack Framework 'Django', follow up the tutorial to learn how we made it..!</p>
-        <a href="https://djangocentral.com/building-a-blog-application-with-django"
-           class="btn btn-danger">Know more!</a>
+        {% if request.user.is_authenticated %}
+        <p class="card-text"> Create a new Post maybe?</p>
+        <a href="#"
+           class="btn btn-danger">Post</a>
+        {% else %}
+        <p class="card-text"> Do you want to create a post? You have to be logged in</p>
+        <a href="{% url 'login' %}"
+           class="btn btn-danger">Login</a>
+        {% endif %}
     </div>
 </div>
 </div>
