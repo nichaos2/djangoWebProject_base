@@ -86,4 +86,5 @@ Open it
 -------
 
 In a browser open the site localhost:port_number
+
 You can see the admin page on localhost:port_ number/admin

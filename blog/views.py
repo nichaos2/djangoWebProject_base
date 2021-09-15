@@ -12,6 +12,8 @@ specified model we just need to mention the template, similarly DetailView provi
 given object of the model at the provided template.
 
 Code copied from the site https://djangocentral.com/building-a-blog-application-with-django/
+
+Add a view to see the API from the tutorial in https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
 """
 
 from django.shortcuts import render, get_object_or_404
@@ -20,6 +22,9 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Post
 from .forms import CommentForm
+from rest_framework import viewsets
+from .serializers import PostSerializer
+
 
 class PostList(generic.ListView):
     """[summary]
@@ -55,3 +60,8 @@ def post_detail(request, slug):
                                            'comments': comments,
                                            'new_comment': new_comment,
                                            'comment_form': comment_form})
+
+class PostApiView(viewsets.ModelViewSet):
+    """ class to see the APi """
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()

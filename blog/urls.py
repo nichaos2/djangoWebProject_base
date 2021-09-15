@@ -18,7 +18,13 @@ Code copied from the site https://djangocentral.com/building-a-blog-application-
 from . import views
 from django.urls import path, include
 
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'posts', views.PostApiView, 'post')
+
 urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
+    path('api/', include(router.urls)),
 ]
