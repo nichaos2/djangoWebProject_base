@@ -31,39 +31,59 @@ Then, Install python and git
 In terminal
 -----------
 
-install python
-clone the project from github
-** To clone only one branch: git clone --branch <branchname> --single-branch <remote-repo-url>
+Install python
+
+
+Clone the project from github
+
+**To clone only one branch, use:** 
+
+```shell
+git clone --branch <branchname> --single-branch <remote-repo-url>
+```
+
 go to the project folder and open VSCode with code .
+
 
 In VSCode
 ---------
+
 shift+P select python 
+
 open a terminal in VSCode
 
-in this terminal
+In this terminal
 ----------------
 
+```shell
 sudo apt install pipenv
+
 sudo pipenv shell
+
 pip install --upgrade django-crispy-forms
+
 python manage.py migrate
+```
 
-
-create superuser/admin
+Create superuser/admin
 ----------------------
 
+```shell
 python manage.py createsuperuser
 username: admin
 password:
+```
 
-run it
+Run it
 ------
 
+Run the command
+```shell
 python manage.py runserver <port number>
+```
 
 Open it
 -------
 
-In a browser open the site localhost:<port number>
-You can see the admin page on localhost:<port number>/admin
+In a browser open the site localhost:port_number
+You can see the admin page on localhost:port_ number/admin
