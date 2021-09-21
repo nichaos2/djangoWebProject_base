@@ -20,11 +20,25 @@ from django.urls import path, include
 
 from rest_framework import routers
 
+from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.views import get_swagger_view
+
 router = routers.DefaultRouter()
-router.register(r'posts', views.PostApiView, 'post')
+router.register(r"posts", views.PostApiView, "posts")
 
 urlpatterns = [
-    path('', views.PostList.as_view(), name='home'),
-    path('<slug:slug>/', views.post_detail, name='post_detail'),
-    path('api/', include(router.urls)),
+    path("", views.PostList.as_view(), name="home"),
+    path("api/", include(router.urls), name="api"),
+    path("api_overview", views.api_overview, name="api_overview"),
+    path("api_overview/post-list", views.postList, name="post-list"),
+    path(
+        "openapi/",
+        get_schema_view(
+            title="Blog Posts service",
+            description="API to get the post of the nichaos blog",
+        ),
+        name="openapi-schema",
+    ),
+    path("swagger_docs/", get_swagger_view(title="Swagger Blog Posts service"), name="swagger"),
+    path("<slug:slug>/", views.post_detail, name="post_detail"),
 ]

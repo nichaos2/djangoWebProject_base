@@ -22,8 +22,13 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Post
 from .forms import CommentForm
+
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from .serializers import PostSerializer
+from blog import serializers
 
 
 class PostList(generic.ListView):
@@ -64,4 +69,22 @@ def post_detail(request, slug):
 class PostApiView(viewsets.ModelViewSet):
     """ class to see the APi """
     serializer_class = PostSerializer
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('created_on')
+    lookup_field = 'slug'
+
+@api_view(['GET'])
+def api_overview(request):
+    api_urls = {
+        'List' : '/post-list/',
+        'Detail View' : '/post-detail/<str:ok>/',
+        'Create' : '/post-create/',
+        'Update' : '/post-update/<str:pk>/',
+        'Delete' : '/post-delete/<str:pk>/'
+    }
+    return Response(api_urls)
+
+@api_view(['GET'])
+def postList(request):
+    posts = Post.objects.all()
+    serializer = PostSerializer(posts, many=True)
+    return Response(serializer.data)
