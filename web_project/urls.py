@@ -19,10 +19,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from register import views as v_register
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', v_register.register, name="register"),
+    path('blog/', include('blog.urls')),
     path('', include('django.contrib.auth.urls')),
-    path('', include('blog.urls')),
+    path('', TemplateView.as_view(template_name='index.html')),
 ]
