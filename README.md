@@ -60,7 +60,11 @@ sudo apt install pipenv
 
 sudo pipenv shell
 
+pip install django
+pipenv install djangorestframework django-cors-headers
 pip install --upgrade django-crispy-forms
+pip install pyyaml
+pip install django-rest-swagger
 
 python manage.py migrate
 ```
