@@ -21,6 +21,9 @@ And later on and very ambitious
 Then it gets more “personal” depending on the need of what you want to do with the data
 * ML -  AI – Analytics
 
+## First step
+Follow the tutorial in this [link](https://djangocentral.com/building-a-blog-application-with-django/)
+
 ## 🚀 Quick start
 
 **How to install and run**
